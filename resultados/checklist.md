@@ -17,7 +17,7 @@
 (El umbral planteado era 4 de 5, es decir 80 %. Con 3 de 3 se alcanza el 100 %, aunque con una muestra menor a la prevista.)
 
 ## Hipótesis 2: cancelación accidental
-**Resultado:** ___ de 3 cancelaron por accidente → ___
+**Resultado:** 0 de 3 cancelaron por accidente → no se observó el riesgo en esta muestra
 
 ## Observaciones
 - **P1:** Presenta muy buena interpretación del uso del sistema. Completó la tarea en el menor tiempo, sin errores ni ayuda.
