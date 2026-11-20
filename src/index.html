@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <!-- Sin viewport el celular simula 980 px de ancho y achica toda la página -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula Abierta · Reserva de talleres</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="reserva.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="contenedor">
+      <p class="marca">Aula Abierta</p>
+      <p class="lema">Talleres abiertos para estudiantes de la FISEI</p>
+    </div>
+  </header>
+
+  <!-- El orden del HTML es el orden de lectura: 1) taller, 2) mi reserva.
+       El CSS solo cambia la distribución, nunca este orden. -->
+  <main id="contenido" class="contenedor">
+    <h1>Elige tu taller</h1>
+
+    <div class="distribucion">
+      <!-- 1. Información del taller y acción principal -->
+      <section class="panel" aria-labelledby="titulo-talleres">
+        <h2 id="titulo-talleres" class="titulo-seccion">Taller disponible</h2>
+
+        <article class="taller" aria-labelledby="titulo-taller">
+          <h3 id="titulo-taller">Interfaces web accesibles</h3>
+
+          <dl class="datos">
+            <div>
+              <dt>Día</dt>
+              <dd>Jueves</dd>
+            </div>
+            <div>
+              <dt>Horario</dt>
+              <dd>14:00 a 16:00</dd>
+            </div>
+            <div>
+              <dt>Lugar</dt>
+              <dd>Laboratorio 2</dd>
+            </div>
+            <div class="dato-decisivo">
+              <dt>Cupos disponibles</dt>
+              <dd><span id="cupos">3</span> de 20</dd>
+            </div>
+          </dl>
+
+          <button type="button" id="btn-reservar" class="btn btn-principal">
+            Reservar un lugar
+          </button>
+        </article>
+      </section>
+
+      <!-- 2. Estado de la reserva (antes era un <aside> que se perdía a 360 px) -->
+      <section class="panel panel-estado" id="mi-reserva" aria-labelledby="titulo-reserva" data-estado="disponible">
+        <h2 id="titulo-reserva" class="titulo-seccion">Mi reserva</h2>
+
+        <p class="insignia" id="insignia">
+          <span class="insignia-icono" id="insignia-icono" aria-hidden="true">○</span>
+          <span id="insignia-texto">Sin reserva</span>
+        </p>
+
+        <!-- Región que comunica cada cambio de estado (la anuncia el lector de pantalla) -->
+        <p role="status" id="estado" class="mensaje">Aún no tienes una reserva.</p>
+
+        <button type="button" id="btn-cancelar" class="btn btn-secundario" disabled>
+          Cancelar reserva
+        </button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Aula Abierta · APE 5 Fase 1 · Interacción Humano–Computador · UTA FISEI</p>
+    </div>
+  </footer>
+</body>
+</html>
