@@ -1,0 +1,210 @@
+/* =========================================================
+   AULA ABIERTA · CSS MOBILE FIRST
+   Base: una sola columna (celular).
+   @media (min-width: 48rem) → 768 px: dos columnas.
+   El orden del HTML (taller → mi reserva) no se altera.
+   ========================================================= */
+
+:root {
+  --texto: #1f2629;           /* sobre blanco: 15,3:1 */
+  --texto-suave: #4b5559;     /* sobre blanco: 7,6:1 */
+  --fondo: #f5f6f7;
+  --superficie: #ffffff;
+  --borde: #c9d0d3;
+  --primario: #1d4e89;        /* con texto blanco: 8,4:1 */
+  --primario-hover: #163c69;
+  --exito: #1b6e3a;           /* con texto blanco: 6,4:1 */
+  --exito-fondo: #e5f3ea;
+  --aviso: #8a4b00;           /* sobre su fondo: 6,0:1 */
+  --aviso-fondo: #fdf0dd;
+  --foco: #f2a900;
+  --radio: 0.75rem;
+  --espacio: 1rem;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1rem;            /* 16 px: legible sin zoom */
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--fondo);
+}
+
+/* ANTES: body { width: 960px } → desborde a 360 px.
+   AHORA: ancho fluido con límite. */
+.contenedor {
+  width: 100%;
+  max-width: 60rem;           /* 960 px como máximo, igual que el boceto */
+  margin-inline: auto;
+  padding-inline: var(--espacio);
+}
+
+h1, h2, h3 { line-height: 1.25; }
+
+/* Foco visible para quien navega con Tab */
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+}
+
+.saltar {
+  position: absolute;
+  left: var(--espacio);
+  top: -3rem;
+  padding: 0.5rem 1rem;
+  background: var(--foco);
+  color: #000;
+  font-weight: 700;
+  z-index: 10;
+}
+.saltar:focus { top: 0.5rem; }
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  background: var(--primario);
+  color: #fff;
+  padding-block: 0.875rem;
+}
+.marca {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.lema { margin: 0; font-size: 0.9375rem; opacity: 0.95; }
+
+main { padding-block: 1.25rem 2rem; }
+h1 { font-size: 1.625rem; margin: 0 0 1rem; }
+
+/* ---------- Distribución: UNA columna en móvil ---------- */
+.distribucion {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio);
+}
+
+.panel {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: var(--espacio);
+  min-width: 0;               /* evita que el contenido empuje la columna */
+}
+
+.titulo-seccion {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.taller h3 { margin: 0 0 0.75rem; font-size: 1.375rem; }
+
+/* Lista de descripción: término y valor en la misma fila */
+.datos { margin: 0 0 1rem; }
+.datos > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.5rem;
+  border-bottom: 1px solid #e3e7e9;
+}
+.datos dt { color: var(--texto-suave); }
+.datos dd { margin: 0; font-weight: 600; text-align: right; }
+
+/* Dato decisivo destacado: es lo que el estudiante necesita para decidir */
+.dato-decisivo dd { font-size: 1.125rem; color: var(--primario); }
+
+/* ---------- Botones nativos ---------- */
+.btn {
+  font: inherit;
+  font-weight: 700;
+  width: 100%;                /* móvil: todo el ancho, fácil de tocar (Fitts) */
+  min-height: 3rem;           /* 48 px */
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.btn-principal { background: var(--primario); color: #fff; }
+.btn-principal:hover:not(:disabled) { background: var(--primario-hover); }
+.btn-secundario { background: #fff; color: var(--primario); border-color: var(--primario); }
+.btn-secundario:hover:not(:disabled) { background: #eef3fa; }
+
+/* Estado deshabilitado claramente distinto (no solo por color: texto y cursor) */
+.btn:disabled {
+  background: #e6e9eb;
+  color: #5c666a;             /* 5,1:1 sobre el gris */
+  border-color: #c9d0d3;
+  cursor: not-allowed;
+}
+
+/* ---------- Panel de estado ---------- */
+.insignia {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  background: #eceff1;
+  color: var(--texto);
+}
+.insignia-icono { font-size: 1.1em; line-height: 1; }
+
+.mensaje { margin: 0 0 1rem; }
+
+/* Cada estado combina ícono + texto + color (nunca solo color) */
+.panel-estado[data-estado="confirmada"] { border: 2px solid var(--exito); }
+.panel-estado[data-estado="confirmada"] .insignia { background: var(--exito); color: #fff; }
+
+.panel-estado[data-estado="cancelada"] { border: 2px solid var(--aviso); }
+.panel-estado[data-estado="cancelada"] .insignia { background: var(--aviso-fondo); color: var(--aviso); }
+
+/* ---------- Pie ---------- */
+.pie {
+  border-top: 1px solid var(--borde);
+  color: var(--texto-suave);
+  font-size: 0.875rem;
+  padding-block: 1rem;
+}
+.pie p { margin: 0; }
+
+/* =========================================================
+   ≥ 48rem (768 px): DOS COLUMNAS
+   Justificación: desde 768 px caben el taller (≈ 430 px) y el
+   panel de estado (≈ 290 px) uno al lado del otro sin comprimir
+   el texto. El estado queda visible junto a la acción, sin scroll.
+   ========================================================= */
+@media (min-width: 48rem) {
+  .distribucion {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: start;
+    gap: 1.5rem;
+  }
+
+  h1 { font-size: 2rem; }
+  .panel { padding: 1.5rem; }
+
+  /* En escritorio el botón ya no necesita todo el ancho */
+  .btn { width: auto; }
+
+  /* El panel de estado acompaña al usuario al desplazarse */
+  .panel-estado { position: sticky; top: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
