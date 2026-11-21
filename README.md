@@ -7,7 +7,7 @@ Repositorio del **Grupo 2** para las dos fases del APE 5 de Interacción Humano�
 | Fase | Contenido | Estado |
 |---|---|---|
 | **Fase 1** | Diagnóstico, ficha, HTML5 semántico, CSS Mobile First y estados de interacción | ✅ Completa |
-| **Fase 2** | Validación de la hipótesis y mejoras | ⏳ En desarrollo |
+| **Fase 2** | Validación de la hipótesis y mejoras | ✅ Completada |
 
 ---
 
@@ -108,7 +108,15 @@ Ver la sección 6 de [docs/proyecto.md](docs/proyecto.md).
 
 ## FASE 2
 
-*En desarrollo.*
+Validación técnica, pruebas con usuarios y conclusiones del APE 5.
+
+| Entregable | Enlace |
+|---|---|
+| Pruebas técnicas en 4 viewports (320, 360, 768 y 1366 px) | [resultados/pruebas.md](resultados/pruebas.md) |
+| Capturas de evidencia | [evidencias/fase2/](evidencias/fase2/) |
+| Observación con usuarios y checklist | [resultados/checklist.md](resultados/checklist.md) |
+| Preparación de la defensa cruzada QA/UX | [docs/preguntas.md](docs/preguntas.md) |
+| Conclusiones finales | [docs/conclusiones.md](docs/conclusiones.md) |
 
 ## Integrantes
 
